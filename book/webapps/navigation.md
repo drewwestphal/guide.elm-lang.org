@@ -200,7 +200,7 @@ update msg model =
 The particularly interesting functions are `Nav.load` and `Nav.pushUrl`. These are both from the [`Browser.Navigation`](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation) module which is all about changing the URL in different ways. We are using the two most common functions from that module:
 
 - [`load`](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation#load) loads all new HTML. It is equivalent to typing the URL into the URL bar and pressing enter. So whatever is happening in your `Model` will be thrown out, and a whole new page is loaded.
-- [`pushUrl`](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation#pushUrl) changes the URL, but does not load new HTML. Instead it triggers a `UrlChanged` message that we handle ourselves! It also adds an entry to the “browser history” so things work normal when people press the `BACK` or `FORWARD` buttons.
+- [`pushUrl`](https://package.elm-lang.org/packages/elm/browser/latest/Browser-Navigation#pushUrl) changes the URL, but does not load new HTML. Instead it triggers a `UrlChanged` message that we handle ourselves! It also adds an entry to the “browser history” so things work normally when people press the `BACK` or `FORWARD` buttons.
 
 So looking back at the `update` function, we can understand how it all fits together a bit better now. When the user clicks a `https://elm-lang.org` link, we get an `External` message and use `load` to load new HTML from those servers. But when the user clicks a `/home` link, we get an `Internal` message and use `pushUrl` to change the URL _without_ loading new HTML!
 
